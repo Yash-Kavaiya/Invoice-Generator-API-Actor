@@ -1,0 +1,293 @@
+{
+  "title": "Invoice Generator Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "companyInfo": {
+      "title": "Company Information",
+      "type": "object",
+      "description": "Your company details",
+      "editor": "json",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Company name",
+          "example": "Acme Corporation"
+        },
+        "address": {
+          "type": "string",
+          "description": "Company address",
+          "example": "123 Business St, Suite 100"
+        },
+        "city": {
+          "type": "string",
+          "description": "City",
+          "example": "San Francisco"
+        },
+        "state": {
+          "type": "string",
+          "description": "State/Province",
+          "example": "CA"
+        },
+        "zipCode": {
+          "type": "string",
+          "description": "ZIP/Postal code",
+          "example": "94105"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country",
+          "example": "USA"
+        },
+        "email": {
+          "type": "string",
+          "description": "Company email",
+          "example": "billing@acme.com"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Company phone",
+          "example": "+1 (555) 123-4567"
+        },
+        "website": {
+          "type": "string",
+          "description": "Company website",
+          "example": "www.acme.com"
+        },
+        "logo": {
+          "type": "string",
+          "description": "URL to company logo image",
+          "example": "https://example.com/logo.png"
+        },
+        "taxId": {
+          "type": "string",
+          "description": "Tax ID / VAT number",
+          "example": "TAX-123456789"
+        }
+      },
+      "required": ["name"]
+    },
+    "clientInfo": {
+      "title": "Client Information",
+      "type": "object",
+      "description": "Client/customer details",
+      "editor": "json",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Client name",
+          "example": "Tech Startup Inc"
+        },
+        "address": {
+          "type": "string",
+          "description": "Client address",
+          "example": "456 Client Ave"
+        },
+        "city": {
+          "type": "string",
+          "description": "City",
+          "example": "New York"
+        },
+        "state": {
+          "type": "string",
+          "description": "State/Province",
+          "example": "NY"
+        },
+        "zipCode": {
+          "type": "string",
+          "description": "ZIP/Postal code",
+          "example": "10001"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country",
+          "example": "USA"
+        },
+        "email": {
+          "type": "string",
+          "description": "Client email",
+          "example": "accounts@techstartup.com"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Client phone",
+          "example": "+1 (555) 987-6543"
+        }
+      },
+      "required": ["name"]
+    },
+    "invoiceDetails": {
+      "title": "Invoice Details",
+      "type": "object",
+      "description": "Invoice metadata",
+      "editor": "json",
+      "properties": {
+        "invoiceNumber": {
+          "type": "string",
+          "description": "Invoice number (auto-generated if not provided)",
+          "example": "INV-2025-001"
+        },
+        "invoiceDate": {
+          "type": "string",
+          "description": "Invoice date (YYYY-MM-DD format, defaults to today)",
+          "example": "2025-11-06"
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "Payment due date (YYYY-MM-DD format)",
+          "example": "2025-12-06"
+        },
+        "dueDays": {
+          "type": "integer",
+          "description": "Days until payment is due (alternative to dueDate)",
+          "example": 30
+        },
+        "currency": {
+          "type": "string",
+          "description": "Currency code (ISO 4217)",
+          "example": "USD",
+          "default": "USD",
+          "enum": ["USD", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF", "CNY", "INR"]
+        },
+        "taxRate": {
+          "type": "number",
+          "description": "Tax rate percentage (e.g., 10 for 10%)",
+          "example": 10,
+          "default": 0
+        },
+        "discountRate": {
+          "type": "number",
+          "description": "Discount rate percentage (e.g., 5 for 5%)",
+          "example": 5,
+          "default": 0
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional notes or terms",
+          "example": "Payment due within 30 days. Thank you for your business!"
+        },
+        "purchaseOrder": {
+          "type": "string",
+          "description": "Purchase order number",
+          "example": "PO-2025-456"
+        }
+      }
+    },
+    "items": {
+      "title": "Invoice Items",
+      "type": "array",
+      "description": "List of items/services on the invoice",
+      "editor": "json",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Item/service description",
+            "example": "Web Development Services"
+          },
+          "quantity": {
+            "type": "number",
+            "description": "Quantity",
+            "example": 40
+          },
+          "unitPrice": {
+            "type": "number",
+            "description": "Price per unit",
+            "example": 150
+          },
+          "unit": {
+            "type": "string",
+            "description": "Unit of measurement",
+            "example": "hours",
+            "default": "units"
+          }
+        },
+        "required": ["description", "quantity", "unitPrice"]
+      },
+      "minItems": 1,
+      "prefill": [
+        {
+          "description": "Consulting Services",
+          "quantity": 10,
+          "unitPrice": 100,
+          "unit": "hours"
+        }
+      ]
+    },
+    "paymentTerms": {
+      "title": "Payment Terms",
+      "type": "object",
+      "description": "Payment information",
+      "editor": "json",
+      "properties": {
+        "bankName": {
+          "type": "string",
+          "description": "Bank name",
+          "example": "Chase Bank"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "Account number",
+          "example": "****1234"
+        },
+        "routingNumber": {
+          "type": "string",
+          "description": "Routing/SWIFT number",
+          "example": "CHASUS33"
+        },
+        "paymentMethods": {
+          "type": "array",
+          "description": "Accepted payment methods",
+          "items": {
+            "type": "string"
+          },
+          "example": ["Bank Transfer", "Credit Card", "PayPal"]
+        }
+      }
+    },
+    "outputFormats": {
+      "title": "Output Formats",
+      "type": "array",
+      "description": "Select which formats to generate",
+      "editor": "select",
+      "items": {
+        "type": "string",
+        "enum": ["PDF", "HTML", "JSON"]
+      },
+      "uniqueItems": true,
+      "default": ["PDF", "JSON"],
+      "prefill": ["PDF", "JSON"]
+    },
+    "template": {
+      "title": "Invoice Template",
+      "type": "string",
+      "description": "Choose an invoice template style",
+      "editor": "select",
+      "enum": ["modern", "classic", "minimal", "professional"],
+      "default": "modern"
+    },
+    "customFields": {
+      "title": "Custom Fields",
+      "type": "array",
+      "description": "Additional custom fields to include",
+      "editor": "json",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "Field label",
+            "example": "Project Name"
+          },
+          "value": {
+            "type": "string",
+            "description": "Field value",
+            "example": "Website Redesign"
+          }
+        }
+      }
+    }
+  },
+  "required": ["companyInfo", "clientInfo", "items"]
+}

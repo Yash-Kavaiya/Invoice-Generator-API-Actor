@@ -1,0 +1,60 @@
+{
+  "companyInfo": {
+    "name": "Jane Smith - Freelance Designer",
+    "email": "jane@janedesigns.com",
+    "phone": "+1 (555) 222-3333",
+    "website": "www.janedesigns.com",
+    "city": "Portland",
+    "state": "OR",
+    "country": "USA"
+  },
+  "clientInfo": {
+    "name": "Startup Ventures LLC",
+    "email": "billing@startupventures.com",
+    "city": "Seattle",
+    "state": "WA"
+  },
+  "invoiceDetails": {
+    "currency": "USD",
+    "taxRate": 0,
+    "dueDays": 15,
+    "notes": "Thank you for your business! Payment due within 15 days via PayPal or bank transfer."
+  },
+  "items": [
+    {
+      "description": "Brand Identity Design",
+      "quantity": 1,
+      "unitPrice": 2500,
+      "unit": "project"
+    },
+    {
+      "description": "Logo Design & Variations",
+      "quantity": 1,
+      "unitPrice": 800,
+      "unit": "project"
+    },
+    {
+      "description": "Social Media Graphics Package",
+      "quantity": 1,
+      "unitPrice": 600,
+      "unit": "package"
+    },
+    {
+      "description": "Revision Rounds",
+      "quantity": 2,
+      "unitPrice": 150,
+      "unit": "round"
+    }
+  ],
+  "paymentTerms": {
+    "paymentMethods": ["PayPal", "Bank Transfer", "Zelle"]
+  },
+  "customFields": [
+    {
+      "label": "Project",
+      "value": "Brand Identity Package"
+    }
+  ],
+  "outputFormats": ["PDF", "HTML"],
+  "template": "minimal"
+}

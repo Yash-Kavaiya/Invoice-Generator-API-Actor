@@ -1,0 +1,54 @@
+{
+  "companyInfo": {
+    "name": "Software Solutions Ltd",
+    "address": "789 Tech Park",
+    "city": "London",
+    "zipCode": "SW1A 1AA",
+    "country": "United Kingdom",
+    "email": "billing@softwaresolutions.co.uk",
+    "phone": "+44 20 1234 5678"
+  },
+  "clientInfo": {
+    "name": "Enterprise Client Corp",
+    "address": "100 Business Plaza",
+    "city": "Manchester",
+    "zipCode": "M1 1AA",
+    "country": "United Kingdom",
+    "email": "accounts@enterpriseclient.com"
+  },
+  "invoiceDetails": {
+    "currency": "GBP",
+    "taxRate": 20,
+    "discountRate": 10,
+    "dueDays": 14,
+    "notes": "10% early payment discount applied. Payment due within 14 days."
+  },
+  "items": [
+    {
+      "description": "Software License - Premium Tier",
+      "quantity": 5,
+      "unitPrice": 299,
+      "unit": "licenses"
+    },
+    {
+      "description": "Implementation & Integration Services",
+      "quantity": 20,
+      "unitPrice": 150,
+      "unit": "hours"
+    },
+    {
+      "description": "Annual Support & Maintenance",
+      "quantity": 1,
+      "unitPrice": 1200,
+      "unit": "year"
+    }
+  ],
+  "paymentTerms": {
+    "bankName": "Barclays Bank",
+    "accountNumber": "12345678",
+    "routingNumber": "BARCGB22",
+    "paymentMethods": ["Bank Transfer", "Direct Debit"]
+  },
+  "outputFormats": ["PDF", "JSON"],
+  "template": "professional"
+}

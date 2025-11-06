@@ -1,0 +1,38 @@
+{
+  "actorSpecification": 1,
+  "name": "invoice-generator-api-actor",
+  "title": "Invoice Generator API Actor",
+  "description": "Automate your invoicing process with professional invoice generation. Create customized invoices in PDF, HTML, and JSON formats with automatic calculations, multi-currency support, and customizable templates.",
+  "version": "1.0",
+  "meta": {
+    "templateId": "node-puppeteer"
+  },
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Generated Invoices",
+      "views": {
+        "overview": {
+          "title": "Invoice Overview",
+          "transformation": {
+            "fields": [
+              "invoiceNumber",
+              "invoiceDate",
+              "dueDate",
+              "clientName",
+              "totalAmount",
+              "currency",
+              "status"
+            ]
+          },
+          "display": {
+            "component": "table"
+          }
+        }
+      }
+    }
+  }
+}
