@@ -10,58 +10,69 @@
       "editor": "json",
       "properties": {
         "name": {
+          "title": "Company Name",
           "type": "string",
-          "description": "Company name",
+          "description": "Your company name",
           "example": "Acme Corporation"
         },
         "address": {
+          "title": "Address",
           "type": "string",
-          "description": "Company address",
+          "description": "Company street address",
           "example": "123 Business St, Suite 100"
         },
         "city": {
+          "title": "City",
           "type": "string",
           "description": "City",
           "example": "San Francisco"
         },
         "state": {
+          "title": "State/Province",
           "type": "string",
-          "description": "State/Province",
+          "description": "State or Province",
           "example": "CA"
         },
         "zipCode": {
+          "title": "ZIP/Postal Code",
           "type": "string",
-          "description": "ZIP/Postal code",
+          "description": "ZIP or Postal code",
           "example": "94105"
         },
         "country": {
+          "title": "Country",
           "type": "string",
           "description": "Country",
           "example": "USA"
         },
         "email": {
+          "title": "Email",
           "type": "string",
-          "description": "Company email",
+          "description": "Company email address",
           "example": "billing@acme.com"
         },
         "phone": {
+          "title": "Phone",
           "type": "string",
-          "description": "Company phone",
+          "description": "Company phone number",
           "example": "+1 (555) 123-4567"
         },
         "website": {
+          "title": "Website",
           "type": "string",
-          "description": "Company website",
+          "description": "Company website URL",
           "example": "www.acme.com"
         },
         "logo": {
+          "title": "Logo URL",
           "type": "string",
           "description": "URL to company logo image",
           "example": "https://example.com/logo.png"
         },
         "taxId": {
+          "title": "Tax ID",
           "type": "string",
-          "description": "Tax ID / VAT number",
+          "description": "Tax ID or VAT number",
           "example": "TAX-123456789"
         }
       },
@@ -74,43 +85,51 @@
       "editor": "json",
       "properties": {
         "name": {
+          "title": "Client Name",
           "type": "string",
-          "description": "Client name",
+          "description": "Client company or person name",
           "example": "Tech Startup Inc"
         },
         "address": {
+          "title": "Address",
           "type": "string",
-          "description": "Client address",
+          "description": "Client street address",
           "example": "456 Client Ave"
         },
         "city": {
+          "title": "City",
           "type": "string",
           "description": "City",
           "example": "New York"
         },
         "state": {
+          "title": "State/Province",
           "type": "string",
-          "description": "State/Province",
+          "description": "State or Province",
           "example": "NY"
         },
         "zipCode": {
+          "title": "ZIP/Postal Code",
           "type": "string",
-          "description": "ZIP/Postal code",
+          "description": "ZIP or Postal code",
           "example": "10001"
         },
         "country": {
+          "title": "Country",
           "type": "string",
           "description": "Country",
           "example": "USA"
         },
         "email": {
+          "title": "Email",
           "type": "string",
-          "description": "Client email",
+          "description": "Client email address",
           "example": "accounts@techstartup.com"
         },
         "phone": {
+          "title": "Phone",
           "type": "string",
-          "description": "Client phone",
+          "description": "Client phone number",
           "example": "+1 (555) 987-6543"
         }
       },
@@ -119,56 +138,71 @@
     "invoiceDetails": {
       "title": "Invoice Details",
       "type": "object",
-      "description": "Invoice metadata",
+      "description": "Invoice metadata and settings",
       "editor": "json",
       "properties": {
         "invoiceNumber": {
+          "title": "Invoice Number",
           "type": "string",
           "description": "Invoice number (auto-generated if not provided)",
           "example": "INV-2025-001"
         },
         "invoiceDate": {
+          "title": "Invoice Date",
           "type": "string",
-          "description": "Invoice date (YYYY-MM-DD format, defaults to today)",
+          "description": "Invoice date in YYYY-MM-DD format (defaults to today)",
           "example": "2025-11-06"
         },
         "dueDate": {
+          "title": "Due Date",
           "type": "string",
-          "description": "Payment due date (YYYY-MM-DD format)",
+          "description": "Payment due date in YYYY-MM-DD format",
           "example": "2025-12-06"
         },
         "dueDays": {
+          "title": "Due Days",
           "type": "integer",
           "description": "Days until payment is due (alternative to dueDate)",
           "example": 30
         },
         "currency": {
+          "title": "Currency",
           "type": "string",
           "description": "Currency code (ISO 4217)",
           "example": "USD",
           "default": "USD",
-          "enum": ["USD", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF", "CNY", "INR"]
+          "enum": ["USD", "EUR", "GBP", "JPY", "CAD", "AUD", "CHF", "CNY", "INR"],
+          "enumTitles": ["US Dollar (USD)", "Euro (EUR)", "British Pound (GBP)", "Japanese Yen (JPY)", "Canadian Dollar (CAD)", "Australian Dollar (AUD)", "Swiss Franc (CHF)", "Chinese Yuan (CNY)", "Indian Rupee (INR)"]
         },
         "taxRate": {
+          "title": "Tax Rate (%)",
           "type": "number",
           "description": "Tax rate percentage (e.g., 10 for 10%)",
           "example": 10,
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 100
         },
         "discountRate": {
+          "title": "Discount Rate (%)",
           "type": "number",
           "description": "Discount rate percentage (e.g., 5 for 5%)",
           "example": 5,
-          "default": 0
+          "default": 0,
+          "minimum": 0,
+          "maximum": 100
         },
         "notes": {
+          "title": "Notes",
           "type": "string",
-          "description": "Additional notes or terms",
-          "example": "Payment due within 30 days. Thank you for your business!"
+          "description": "Additional notes or payment terms",
+          "example": "Payment due within 30 days. Thank you for your business!",
+          "editor": "textarea"
         },
         "purchaseOrder": {
+          "title": "Purchase Order Number",
           "type": "string",
-          "description": "Purchase order number",
+          "description": "Client purchase order number",
           "example": "PO-2025-456"
         }
       }
@@ -182,21 +216,27 @@
         "type": "object",
         "properties": {
           "description": {
+            "title": "Description",
             "type": "string",
-            "description": "Item/service description",
+            "description": "Item or service description",
             "example": "Web Development Services"
           },
           "quantity": {
+            "title": "Quantity",
             "type": "number",
             "description": "Quantity",
-            "example": 40
+            "example": 40,
+            "minimum": 0
           },
           "unitPrice": {
+            "title": "Unit Price",
             "type": "number",
             "description": "Price per unit",
-            "example": 150
+            "example": 150,
+            "minimum": 0
           },
           "unit": {
+            "title": "Unit",
             "type": "string",
             "description": "Unit of measurement",
             "example": "hours",
@@ -218,27 +258,32 @@
     "paymentTerms": {
       "title": "Payment Terms",
       "type": "object",
-      "description": "Payment information",
+      "description": "Payment information and banking details",
       "editor": "json",
       "properties": {
         "bankName": {
+          "title": "Bank Name",
           "type": "string",
-          "description": "Bank name",
+          "description": "Name of the bank",
           "example": "Chase Bank"
         },
         "accountNumber": {
+          "title": "Account Number",
           "type": "string",
-          "description": "Account number",
+          "description": "Bank account number",
           "example": "****1234"
         },
         "routingNumber": {
+          "title": "Routing/SWIFT Number",
           "type": "string",
-          "description": "Routing/SWIFT number",
+          "description": "Routing or SWIFT code",
           "example": "CHASUS33"
         },
         "paymentMethods": {
+          "title": "Payment Methods",
           "type": "array",
           "description": "Accepted payment methods",
+          "editor": "json",
           "items": {
             "type": "string"
           },
@@ -265,27 +310,31 @@
       "description": "Choose an invoice template style",
       "editor": "select",
       "enum": ["modern", "classic", "minimal", "professional"],
+      "enumTitles": ["Modern (Blue & Contemporary)", "Classic (Traditional & Formal)", "Minimal (Clean & Simple)", "Professional (Corporate & Structured)"],
       "default": "modern"
     },
     "customFields": {
       "title": "Custom Fields",
       "type": "array",
-      "description": "Additional custom fields to include",
+      "description": "Additional custom fields to include on the invoice",
       "editor": "json",
       "items": {
         "type": "object",
         "properties": {
           "label": {
+            "title": "Label",
             "type": "string",
             "description": "Field label",
             "example": "Project Name"
           },
           "value": {
+            "title": "Value",
             "type": "string",
             "description": "Field value",
             "example": "Website Redesign"
           }
-        }
+        },
+        "required": ["label", "value"]
       }
     }
   },
