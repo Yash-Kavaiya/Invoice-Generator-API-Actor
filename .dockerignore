@@ -1,0 +1,37 @@
+# Git
+.git
+.gitignore
+
+# Node modules
+node_modules
+npm-debug.log
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+test/
+*.test.js
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Examples (not needed in production)
+examples/
+
+# Storage
+apify_storage/
+storage/
+
+# Environment
+.env
+.env.*

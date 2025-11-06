@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice {{invoiceNumber}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        .invoice-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #3498db;
+        }
+        .logo {
+            max-width: 200px;
+            max-height: 80px;
+        }
+        .invoice-title {
+            text-align: right;
+        }
+        .invoice-title h1 {
+            font-size: 42px;
+            color: #3498db;
+            font-weight: 300;
+            margin-bottom: 5px;
+        }
+        .invoice-number {
+            font-size: 18px;
+            color: #666;
+        }
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+        .info-block {
+            flex: 1;
+        }
+        .info-block h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #3498db;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .info-block p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .info-block strong {
+            color: #333;
+        }
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .items-table thead {
+            background: #3498db;
+            color: white;
+        }
+        .items-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+        .items-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+        .items-table tbody tr:hover {
+            background: #f9f9f9;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .totals {
+            margin-left: auto;
+            width: 350px;
+        }
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 15px;
+        }
+        .total-row.subtotal {
+            border-top: 1px solid #eee;
+        }
+        .total-row.final {
+            background: #3498db;
+            color: white;
+            padding: 15px 20px;
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .notes {
+            margin-top: 50px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 4px solid #3498db;
+        }
+        .notes h4 {
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+        .notes p {
+            font-size: 14px;
+            color: #666;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+        }
+        .custom-fields {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fafafa;
+        }
+        .custom-field {
+            display: flex;
+            padding: 8px 0;
+        }
+        .custom-field strong {
+            width: 150px;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="header">
+            <div>
+                {{#if companyInfo.logo}}
+                <img src="{{companyInfo.logo}}" alt="{{companyInfo.name}}" class="logo">
+                {{else}}
+                <h2 style="color: #3498db;">{{companyInfo.name}}</h2>
+                {{/if}}
+            </div>
+            <div class="invoice-title">
+                <h1>INVOICE</h1>
+                <div class="invoice-number">{{invoiceNumber}}</div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-block">
+                <h3>From</h3>
+                <p><strong>{{companyInfo.name}}</strong></p>
+                {{#if companyInfo.address}}<p>{{companyInfo.address}}</p>{{/if}}
+                {{#if companyInfo.city}}<p>{{companyInfo.city}}{{#if companyInfo.state}}, {{companyInfo.state}}{{/if}} {{companyInfo.zipCode}}</p>{{/if}}
+                {{#if companyInfo.country}}<p>{{companyInfo.country}}</p>{{/if}}
+                {{#if companyInfo.email}}<p>{{companyInfo.email}}</p>{{/if}}
+                {{#if companyInfo.phone}}<p>{{companyInfo.phone}}</p>{{/if}}
+                {{#if companyInfo.taxId}}<p>Tax ID: {{companyInfo.taxId}}</p>{{/if}}
+            </div>
+
+            <div class="info-block">
+                <h3>Bill To</h3>
+                <p><strong>{{clientInfo.name}}</strong></p>
+                {{#if clientInfo.address}}<p>{{clientInfo.address}}</p>{{/if}}
+                {{#if clientInfo.city}}<p>{{clientInfo.city}}{{#if clientInfo.state}}, {{clientInfo.state}}{{/if}} {{clientInfo.zipCode}}</p>{{/if}}
+                {{#if clientInfo.country}}<p>{{clientInfo.country}}</p>{{/if}}
+                {{#if clientInfo.email}}<p>{{clientInfo.email}}</p>{{/if}}
+                {{#if clientInfo.phone}}<p>{{clientInfo.phone}}</p>{{/if}}
+            </div>
+
+            <div class="info-block">
+                <h3>Invoice Details</h3>
+                <p><strong>Date:</strong> {{invoiceDate}}</p>
+                <p><strong>Due Date:</strong> {{dueDate}}</p>
+                {{#if purchaseOrder}}<p><strong>PO Number:</strong> {{purchaseOrder}}</p>{{/if}}
+                <p><strong>Currency:</strong> {{currency}}</p>
+            </div>
+        </div>
+
+        {{#if customFields}}
+        <div class="custom-fields">
+            {{#each customFields}}
+            <div class="custom-field">
+                <strong>{{label}}:</strong>
+                <span>{{value}}</span>
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th class="text-right">Unit Price</th>
+                    <th class="text-right">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each items}}
+                <tr>
+                    <td>{{description}}</td>
+                    <td>{{quantity}}</td>
+                    <td>{{unit}}</td>
+                    <td class="text-right">{{formatCurrency unitPrice ../currency}}</td>
+                    <td class="text-right">{{formatCurrency lineTotal ../currency}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <div class="totals">
+            <div class="total-row subtotal">
+                <span>Subtotal:</span>
+                <span>{{formatCurrency subtotal currency}}</span>
+            </div>
+            {{#if discount}}
+            <div class="total-row">
+                <span>Discount ({{discountRate}}%):</span>
+                <span>-{{formatCurrency discount currency}}</span>
+            </div>
+            {{/if}}
+            {{#if tax}}
+            <div class="total-row">
+                <span>Tax ({{taxRate}}%):</span>
+                <span>{{formatCurrency tax currency}}</span>
+            </div>
+            {{/if}}
+            <div class="total-row final">
+                <span>TOTAL:</span>
+                <span>{{formatCurrency total currency}}</span>
+            </div>
+        </div>
+
+        {{#if notes}}
+        <div class="notes">
+            <h4>Notes</h4>
+            <p>{{notes}}</p>
+        </div>
+        {{/if}}
+
+        {{#if paymentTerms}}
+        <div class="notes">
+            <h4>Payment Information</h4>
+            {{#if paymentTerms.bankName}}<p><strong>Bank:</strong> {{paymentTerms.bankName}}</p>{{/if}}
+            {{#if paymentTerms.accountNumber}}<p><strong>Account:</strong> {{paymentTerms.accountNumber}}</p>{{/if}}
+            {{#if paymentTerms.routingNumber}}<p><strong>Routing:</strong> {{paymentTerms.routingNumber}}</p>{{/if}}
+            {{#if paymentTerms.paymentMethods}}<p><strong>Accepted Methods:</strong> {{join paymentTerms.paymentMethods ", "}}</p>{{/if}}
+        </div>
+        {{/if}}
+
+        <div class="footer">
+            <p>Thank you for your business!</p>
+            {{#if companyInfo.website}}<p>{{companyInfo.website}}</p>{{/if}}
+        </div>
+    </div>
+</body>
+</html>

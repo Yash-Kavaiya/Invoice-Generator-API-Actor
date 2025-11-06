@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice {{invoiceNumber}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #111;
+            line-height: 1.8;
+            padding: 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        .meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            font-size: 14px;
+        }
+        .meta h3 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .meta p {
+            margin: 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+        }
+        th {
+            text-align: left;
+            font-weight: 500;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        td {
+            padding: 15px 0;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 14px;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .totals {
+            margin-left: auto;
+            width: 300px;
+            margin-top: 20px;
+        }
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        .total-row.final {
+            font-size: 20px;
+            font-weight: 500;
+            padding-top: 20px;
+            border-top: 1px solid #000;
+        }
+        .notes {
+            margin-top: 60px;
+            font-size: 13px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invoice {{invoiceNumber}}</h1>
+
+    <div class="meta">
+        <div>
+            <h3>From</h3>
+            <p><strong>{{companyInfo.name}}</strong></p>
+            {{#if companyInfo.address}}<p>{{companyInfo.address}}</p>{{/if}}
+            {{#if companyInfo.email}}<p>{{companyInfo.email}}</p>{{/if}}
+        </div>
+
+        <div>
+            <h3>For</h3>
+            <p><strong>{{clientInfo.name}}</strong></p>
+            {{#if clientInfo.address}}<p>{{clientInfo.address}}</p>{{/if}}
+            {{#if clientInfo.email}}<p>{{clientInfo.email}}</p>{{/if}}
+        </div>
+
+        <div>
+            <h3>Date</h3>
+            <p>{{invoiceDate}}</p>
+        </div>
+
+        <div>
+            <h3>Due</h3>
+            <p>{{dueDate}}</p>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th class="text-right">Rate</th>
+                <th class="text-right">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each items}}
+            <tr>
+                <td>{{description}}</td>
+                <td>{{quantity}} {{unit}}</td>
+                <td class="text-right">{{formatCurrency unitPrice ../currency}}</td>
+                <td class="text-right">{{formatCurrency lineTotal ../currency}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div class="totals">
+        <div class="total-row">
+            <span>Subtotal</span>
+            <span>{{formatCurrency subtotal currency}}</span>
+        </div>
+        {{#if tax}}
+        <div class="total-row">
+            <span>Tax</span>
+            <span>{{formatCurrency tax currency}}</span>
+        </div>
+        {{/if}}
+        <div class="total-row final">
+            <span>Total</span>
+            <span>{{formatCurrency total currency}}</span>
+        </div>
+    </div>
+
+    {{#if notes}}
+    <div class="notes">
+        {{notes}}
+    </div>
+    {{/if}}
+</body>
+</html>

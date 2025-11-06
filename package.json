@@ -1,0 +1,32 @@
+{
+  "name": "invoice-generator-api-actor",
+  "version": "1.0.0",
+  "description": "Automate your invoicing process with this Invoice Generator API Actor. Generate professional invoices in PDF, HTML, and JSON formats with customizable templates, automatic calculations, and multi-currency support.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "invoice",
+    "generator",
+    "apify",
+    "actor",
+    "automation",
+    "billing",
+    "pdf",
+    "accounting"
+  ],
+  "author": "Apify",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "apify": "^3.1.10",
+    "puppeteer": "^21.5.2",
+    "handlebars": "^4.7.8",
+    "moment": "^2.29.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yash-Kavaiya/Invoice-Generator-API-Actor"
+  }
+}

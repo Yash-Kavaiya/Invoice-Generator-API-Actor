@@ -1,0 +1,63 @@
+{
+  "companyInfo": {
+    "name": "Global Consulting Partners",
+    "address": "1-2-3 Marunouchi",
+    "city": "Tokyo",
+    "zipCode": "100-0005",
+    "country": "Japan",
+    "email": "invoices@globalconsulting.jp",
+    "phone": "+81 3-1234-5678"
+  },
+  "clientInfo": {
+    "name": "International Corp",
+    "address": "Neue Mainzer Str. 1",
+    "city": "Frankfurt",
+    "zipCode": "60311",
+    "country": "Germany",
+    "email": "ap@internationalcorp.de"
+  },
+  "invoiceDetails": {
+    "currency": "EUR",
+    "taxRate": 19,
+    "dueDays": 30,
+    "notes": "VAT included. Payment in EUR. International bank transfers may take 3-5 business days."
+  },
+  "items": [
+    {
+      "description": "Management Consulting Services - Q4 2025",
+      "quantity": 160,
+      "unitPrice": 200,
+      "unit": "hours"
+    },
+    {
+      "description": "Strategic Planning Workshop",
+      "quantity": 2,
+      "unitPrice": 5000,
+      "unit": "days"
+    },
+    {
+      "description": "Market Research Report",
+      "quantity": 1,
+      "unitPrice": 8000,
+      "unit": "report"
+    }
+  ],
+  "paymentTerms": {
+    "bankName": "Deutsche Bank",
+    "accountNumber": "DE89370400440532013000",
+    "routingNumber": "DEUTDEFF",
+    "paymentMethods": ["SEPA Transfer", "International Wire"]
+  },
+  "customFields": [
+    {
+      "label": "Contract Reference",
+      "value": "GCP-2025-Q4"
+    },
+    {
+      "label": "Engagement Manager",
+      "value": "Takeshi Yamamoto"
+    }
+  ],
+  "outputFormats": ["PDF", "JSON"],
+  "template": "classic"
+}

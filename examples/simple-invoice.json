@@ -1,0 +1,16 @@
+{
+  "companyInfo": {
+    "name": "My Business"
+  },
+  "clientInfo": {
+    "name": "John Doe"
+  },
+  "items": [
+    {
+      "description": "Consulting Services",
+      "quantity": 10,
+      "unitPrice": 100,
+      "unit": "hours"
+    }
+  ]
+}

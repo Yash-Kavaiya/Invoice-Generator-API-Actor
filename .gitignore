@@ -1,0 +1,31 @@
+# Apify storage
+apify_storage/
+storage/
+
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Generated files
+dist/
+build/
+*.pdf
+*.html
